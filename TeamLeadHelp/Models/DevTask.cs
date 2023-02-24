@@ -1,4 +1,4 @@
-﻿namespace TeamLeadHelp.Data.Model
+﻿namespace TeamLeadHelp.Models
 {
     public class DevTask
     {
@@ -7,7 +7,7 @@
         public string? Description { get; set; }
         public int HoursEstimated { get; set; }
         public int WorkedHours { get; set; }
-        public bool IsFinished{ get; set; }
-        public bool OnHold{ get; set; }
+        public bool IsFinished { get; set; }
+        public bool OnHold { get; set; }
     }
 }
