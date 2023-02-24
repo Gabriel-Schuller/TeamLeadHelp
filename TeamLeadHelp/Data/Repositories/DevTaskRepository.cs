@@ -1,4 +1,5 @@
-﻿using TeamLeadHelp.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using TeamLeadHelp.Models;
 
 namespace TeamLeadHelp.Data.Repositories
 {
@@ -26,29 +27,37 @@ namespace TeamLeadHelp.Data.Repositories
             return devTask;
         }
 
-        public Task<IEnumerable<DevTask>> GetAll()
+        public async Task<List<DevTask>> GetAll()
         {
-            throw new NotImplementedException();
+            return await _context.Tasks.ToListAsync();
         }
 
-        public Task<IEnumerable<DevTask>> GetAllOnHold()
+        public async Task<List<DevTask>> GetAllOnHold()
         {
-            throw new NotImplementedException();
+            return await _context.Tasks.Where(d => d.OnHold).ToListAsync();
         }
 
-        public Task<DevTask> GetById(int id)
+        public async Task<DevTask> GetById(int id)
         {
-            throw new NotImplementedException();
+            return await _context.Tasks.FindAsync(id);
+
         }
 
-        public Task<IEnumerable<DevTask>> GetTasksInProgress()
+        public async Task<List<DevTask>> GetTasksInProgress()
         {
-            throw new NotImplementedException();
+            return await _context.Tasks.Where(d => !d.IsFinished).ToListAsync();
+
         }
 
-        public Task<DevTask> Update(DevTask devTask)
+        public async Task<DevTask> Update(DevTask devTask, int id)
         {
-            throw new NotImplementedException();
+            var oldTask = await _context.Tasks.FindAsync(id);
+            if (oldTask == null) return null;
+            _context.Tasks.Remove(oldTask);
+            devTask.ID = id;
+            _context.Tasks.AddAsync(devTask);
+            await _context.SaveChangesAsync();
+            return devTask;
         }
     }
 }

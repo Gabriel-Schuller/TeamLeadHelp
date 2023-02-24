@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using TeamLeadHelp.Data;
+using TeamLeadHelp.Data.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,7 +11,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<DevTaskContext>(option =>
-option.UseSqlServer(builder.Configuration.GetConnectionString("TeamLeadHelp")));
+    option.UseSqlServer(builder.Configuration.GetConnectionString("TeamLeadHelp")));
+builder.Services.AddScoped<IDevTaskRepository, DevTaskRepository>();
 
 var app = builder.Build();
 

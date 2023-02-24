@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using TeamLeadHelp.Data.Models;
+using TeamLeadHelp.Models;
 
 namespace TeamLeadHelp.Data
 {

@@ -4,12 +4,12 @@ namespace TeamLeadHelp.Data.Repositories
 {
     public interface IDevTaskRepository
     {
-        Task<IEnumerable<DevTask>> GetAll();
-        Task<IEnumerable<DevTask>> GetAllOnHold();
-        Task<IEnumerable<DevTask>> GetTasksInProgress();
+        Task<List<DevTask>> GetAll();
+        Task<List<DevTask>> GetAllOnHold();
+        Task<List<DevTask>> GetTasksInProgress();
         Task<DevTask> GetById(int id);
-        Task<DevTask> Add(DevTask product);
-        Task<DevTask> Update(DevTask product);
+        Task<DevTask> Add(DevTask devTask);
+        Task<DevTask> Update(DevTask devTask, int id);
         Task<DevTask> Delete(int id);
     }
 }
