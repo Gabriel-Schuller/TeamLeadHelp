@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TeamLeadHelp.Data;
 
@@ -10,9 +11,11 @@ using TeamLeadHelp.Data;
 namespace TeamLeadHelp.Migrations
 {
     [DbContext(typeof(DevTaskContext))]
-    partial class DevTaskContextModelSnapshot : ModelSnapshot
+    [Migration("20230228134546_28Feb")]
+    partial class _28Feb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

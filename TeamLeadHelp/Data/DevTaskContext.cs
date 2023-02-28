@@ -21,6 +21,7 @@ namespace TeamLeadHelp.Data
             modelBuilder.Entity<DevTask>()
                 .Property(d => d.Description)
                 .IsRequired()
+                .HasDefaultValue("Description To be added at a later time")
                 .HasMaxLength(1000)
                 .IsUnicode(true)
                 .IsFixedLength(false);

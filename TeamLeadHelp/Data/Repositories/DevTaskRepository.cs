@@ -13,7 +13,7 @@ namespace TeamLeadHelp.Data.Repositories
         }
         public async Task<DevTask> Add(DevTask devTask)
         {
-            _context.Tasks.AddAsync(devTask);
+            await _context.Tasks.AddAsync(devTask);
             await _context.SaveChangesAsync();
             return devTask;
         }
@@ -55,7 +55,7 @@ namespace TeamLeadHelp.Data.Repositories
             if (oldTask == null) return null;
             _context.Tasks.Remove(oldTask);
             devTask.ID = id;
-            _context.Tasks.AddAsync(devTask);
+            await _context.Tasks.AddAsync(devTask);
             await _context.SaveChangesAsync();
             return devTask;
         }
